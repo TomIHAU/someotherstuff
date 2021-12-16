@@ -1,0 +1,12 @@
+<div id="bannerBox">
+    <img id="frontBanner"src="images/banner.png">
+    <p id="frontSales">Christmas Sale on Now!</p>
+</div>
+
+<article class="displayProducts">
+    
+    {{#each products as |product|}}
+        {{>singleProduct}}
+    {{/each}}
+    
+</article>

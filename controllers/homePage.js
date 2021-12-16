@@ -17,23 +17,11 @@ const wallet = async (currentUser) => {
 //route to front page with all products currently for sale
 router.get("/", async (req, res) => {
   try {
-    const productData = await Product.findAll({
-      include: [{ model: Category }, { model: User }],
-    });
+    productData = await Product.findAll({});
+
     const products = productData.map((product) => product.get({ plain: true }));
-    if (req.session.user_id) {
-      const userWallet = await wallet(req.session.user_id);
-      res.render("salesPage", {
-        products,
-        logged_in: req.session.logged_in,
-        userWallet,
-      });
-    } else {
-      res.render("salesPage", {
-        products,
-        logged_in: req.session.logged_in,
-      });
-    }
+
+    res.render("home", { products, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }
