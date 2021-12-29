@@ -45,11 +45,18 @@ router.get("/signup", async (req, res) => {
 router.get("/login", async (req, res) => {
   try {
     if (req.session.user_id) {
-      const userWallet = await wallet(req.session.user_id);
-      res.render("login", { logged_in: req.session.logged_in, userWallet });
+      res.render("login", { logged_in: req.session.logged_in });
     } else {
       res.render("login", { logged_in: req.session.logged_in });
     }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/yourCart", async (req, res) => {
+  try {
+    res.render("yourCart", { logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }

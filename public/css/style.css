@@ -5,17 +5,24 @@ header {
   background-color: var(--main-color);
 }
 
-header a {
+header {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+}
+header div {
+  margin-right: 10px;
+}
+header div a img {
+  height: 30px;
 }
 
-a#userIcon {
+/* a#userIcon {
   height: 5%;
   position: fixed;
   right: 5%;
   top: 3.5%;
-}
+} */
 
 .userFormCon {
   width: 360px;
@@ -25,6 +32,7 @@ a#userIcon {
   border-radius: 20px;
   height: 70%;
   box-shadow: 0 1px 10px slategrey;
+  margin-top: 10px;
 }
 .wh100 {
   width: 100%;
@@ -49,7 +57,10 @@ a#userIcon {
   border: solid 5px white;
   padding: 20px;
 }
-  
+
+article.underBanner {
+  padding: 40px 20%;
+  text-align: center;
 }
 
 .userForm {
@@ -130,8 +141,8 @@ input {
   color: white;
 }
 
-.card {
-  box-shadow: 0 4px 8px 0 #00000033;
+.productCard {
+  box-shadow: 2px 4px 8px 1px #00000033;
   max-width: 300px;
   margin: 10px auto;
   text-align: center;
@@ -140,6 +151,15 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 5px;
+}
+
+.productCard h1 {
+  line-height: 1.5;
+}
+
+img.cardImg {
+  border-radius: 5px 5px 0 0;
 }
 
 .price {
@@ -157,13 +177,14 @@ input {
   cursor: pointer;
   width: 100%;
   font-size: 18px;
+  border-radius: 0 0 5px 5px;
 }
 
 .cardBtn:hover {
   opacity: 0.7;
 }
 
-.displayProducts {
+#displayProducts {
   display: flex;
   flex-wrap: wrap;
 }

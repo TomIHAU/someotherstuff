@@ -13,6 +13,7 @@ const seedAll = async () => {
     individualHooks: true,
     returning: true,
   });
+
   console.log("\n----- USERS SEEDED -----\n");
 
   await seedProducts();

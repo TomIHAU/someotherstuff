@@ -2,18 +2,23 @@ const { Product } = require("../models");
 
 const productData = [
   {
-    name: "Shoes",
-    price: 49.99,
+    name: "Runners",
+    price: 50,
     description: "great outdoor boots",
+    type: "shoes",
+    brand: "nike",
   },
   {
-    name: "Jeans",
-    price: 19.99,
+    name: "Trackies",
+    price: 20,
     description: "Jeans are great, but not as comfy as trackies",
+    type: "pants",
   },
   {
-    name: "Shirt",
-    price: 29.99,
+    name: "Sports shirt",
+    price: 15,
+    type: "shirt",
+    brand: "nike",
   },
 ];
 

@@ -23,6 +23,16 @@ Product.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    type: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    //   `quantity` int(11) NOT NULL,
+    // `img` text NOT NULL,
+    brand: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,

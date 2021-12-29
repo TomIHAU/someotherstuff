@@ -2,11 +2,17 @@
     <img id="frontBanner"src="images/banner.png">
     <p id="frontSales">Christmas Sale on Now!</p>
 </div>
-
-<article class="displayProducts">
+<article class="underBanner">
+    <h2>OUR ANNUAL VIP XMAS DAY IS HERE | SHOP 25% OFF STOREWIDE</h2>
+    <p>ends thurs 16th midnight - discount automatically applied at checkout.
+</p>
+</article>
+<article id="displayProducts">
     
     {{#each products as |product|}}
-        {{>singleProduct}}
+        {{!-- {{#if (select_brand brand)}} --}}
+            {{>singleProduct}}
+        {{!-- {{/if}} --}}
     {{/each}}
-    
+    <script src="/js/addToCart.js"></script>
 </article>
