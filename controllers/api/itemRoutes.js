@@ -34,4 +34,29 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.delete("/", async (req, res) => {
+  try {
+    const item_id = await Item.findByPk(req.body.id);
+    if (!item_id) {
+      res.status(400).json({ message: "cant find the id of this product" });
+      return;
+    }
+    await item_id.destroy();
+    return;
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.put("/", async (req, res) => {
+  try {
+    const item = await Item.findOne({ where: { id: req.body.id } });
+    item.qty = item.qty + req.body.change;
+    await item.save();
+    res.status(200).json(item);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;

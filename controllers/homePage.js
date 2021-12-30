@@ -61,7 +61,7 @@ router.get("/yourCart", async (req, res) => {
       include: { model: Item, include: { model: Product } },
     });
     const cart = cartData.get({ plain: true });
-
+    console.log(cart);
     res.render("yourCart", { logged_in: req.session.logged_in, cart });
   } catch (err) {
     res.status(500).json(err);

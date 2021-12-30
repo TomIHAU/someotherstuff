@@ -2,13 +2,15 @@
     <div class="cartImgCont">
         <img class=""src="images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
     </div>
-    <div class="cartInfo">
+    <div class="cartInfo"  data-id={{id}}>
     <h2>{{product.type}}</h2>
     <h1>{{product.name}}</h1>
     <div class="cartQty">
-        <button id="item-quantity-{{id}}-decrement" 
-        aria-label="decrement quantity" 
-        data-automation="decrement-qty-{{id}}">
+        <button 
+        class="change"
+        data-dec={{id}}
+        data-qty={{qty}}
+        aria-label="decrement quantity">
             <svg focusable="false" viewBox="0 0 32 32" width="1em" 
             height="1em">
                 <line fill="none" stroke="currentColor" x1="26" y1="16" x2="6" y2="16"
@@ -17,14 +19,16 @@
             </svg>
         </button>
         <input class="cartVal"
+        min="1"
         id="select-item-quantity-{{id}}" 
         name="select-item-quantity-{{id}}" 
         type="tel" 
         aria-label={{product.name}}
         value={{qty}}>
-        <button id="select-item-quantity-{{id}}-increment"
-        aria-label="increment quantity" 
-        data-automation="increment-qty-{{id}}">
+        <button 
+        class="change"
+        data-inc={{id}}
+        aria-label="increment quantity">
             <svg focusable="false" viewBox="0 0 32 32" width="1em" height="1em">
                 <line fill="none" stroke="currentColor" 
                 class="cls-1" x1="16" y1="6" x2="16" y2="26" 
@@ -38,5 +42,7 @@
         </button>
         </div>        
         <p>${{product.price}}</p>
+        <p>Total cost: ${{item_total product.price qty}}</p>
+        <button  class="closeBtn"><img src="/images/close.png" alt=""></button>
     </div>
 </div>

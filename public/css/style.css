@@ -28,6 +28,9 @@ header div a img {
   display: block;
   width: 20%;
 }
+.cartInfo {
+  width: 100%;
+}
 .cartVal {
   z-index: 4;
   height: 32px;
@@ -58,7 +61,14 @@ header div a img {
   border: 0px;
   cursor: pointer;
 }
-
+.closeBtn img {
+  height: 20px;
+}
+button.closeBtn {
+  float: right;
+  position: relative;
+  top: -97px;
+}
 .userFormCon {
   width: 360px;
   text-align: center;
