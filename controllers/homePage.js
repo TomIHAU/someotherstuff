@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const path = require("path");
 const withAuth = require("../utils/auth");
-const { Product, User, Wallet, Category, History } = require("../models");
+const { Product, User, Item, Cart } = require("../models");
 
 //a function that gets the user wallet so we can populate the wallet: on every page
 const wallet = async (currentUser) => {
@@ -56,7 +56,13 @@ router.get("/login", async (req, res) => {
 
 router.get("/yourCart", async (req, res) => {
   try {
-    res.render("yourCart", { logged_in: req.session.logged_in });
+    const cartData = await Cart.findOne({
+      where: { user_id: req.session.user_id },
+      include: { model: Item, include: { model: Product } },
+    });
+    const cart = cartData.get({ plain: true });
+
+    res.render("yourCart", { logged_in: req.session.logged_in, cart });
   } catch (err) {
     res.status(500).json(err);
   }
@@ -65,30 +71,7 @@ router.get("/yourCart", async (req, res) => {
 //user goes to a page that lists their items and allow them to sell
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    const userData = await User.findOne({
-      where: {
-        id: req.session.user_id,
-      },
-    });
-    const userName = userData.username;
-
-    const userProductsData = await Product.findAll({
-      include: [{ model: Category }],
-      where: { user_id: req.session.user_id },
-    });
-    const product = userProductsData.map((Data) => Data.get({ plain: true }));
-
-    if (req.session.user_id) {
-      const userWallet = await wallet(req.session.user_id);
-      res.render("dashboard", {
-        userName,
-        product,
-        logged_in: req.session.logged_in,
-        userWallet,
-      });
-    } else {
-      res.render("dashboard", { userName, logged_in: req.session.logged_in });
-    }
+    res.render("dashboard", { logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);
   }

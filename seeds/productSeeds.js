@@ -4,14 +4,14 @@ const productData = [
   {
     name: "Runners",
     price: 50,
-    description: "great outdoor boots",
+    desc: "great outdoor boots",
     type: "shoes",
     brand: "nike",
   },
   {
     name: "Trackies",
     price: 20,
-    description: "Jeans are great, but not as comfy as trackies",
+    desc: "Jeans are great, but not as comfy as trackies",
     type: "pants",
   },
   {

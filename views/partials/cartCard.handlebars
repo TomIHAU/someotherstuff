@@ -1,0 +1,42 @@
+<div class="cartCard"> 
+    <div class="cartImgCont">
+        <img class=""src="images/jeans3.jpg" alt="Denim Jeans" style="width:100%">
+    </div>
+    <div class="cartInfo">
+    <h2>{{product.type}}</h2>
+    <h1>{{product.name}}</h1>
+    <div class="cartQty">
+        <button id="item-quantity-{{id}}-decrement" 
+        aria-label="decrement quantity" 
+        data-automation="decrement-qty-{{id}}">
+            <svg focusable="false" viewBox="0 0 32 32" width="1em" 
+            height="1em">
+                <line fill="none" stroke="currentColor" x1="26" y1="16" x2="6" y2="16"
+                vector-effect="non-scaling-stroke">
+                </line>
+            </svg>
+        </button>
+        <input class="cartVal"
+        id="select-item-quantity-{{id}}" 
+        name="select-item-quantity-{{id}}" 
+        type="tel" 
+        aria-label={{product.name}}
+        value={{qty}}>
+        <button id="select-item-quantity-{{id}}-increment"
+        aria-label="increment quantity" 
+        data-automation="increment-qty-{{id}}">
+            <svg focusable="false" viewBox="0 0 32 32" width="1em" height="1em">
+                <line fill="none" stroke="currentColor" 
+                class="cls-1" x1="16" y1="6" x2="16" y2="26" 
+                vector-effect="non-scaling-stroke">
+                </line>
+                <line fill="none" stroke="currentColor"
+                class="cls-1" x1="26" y1="16" x2="6" y2="16" 
+                vector-effect="non-scaling-stroke">
+                </line>
+            </svg>
+        </button>
+        </div>        
+        <p>${{product.price}}</p>
+    </div>
+</div>

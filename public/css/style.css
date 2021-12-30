@@ -16,13 +16,48 @@ header div {
 header div a img {
   height: 30px;
 }
+.cartHeader {
+  text-align: center;
+}
+.cartCard {
+  border: #c2c0c0 1px solid;
+  margin: 15px;
+  display: flex;
+}
+.cartImgCont {
+  display: block;
+  width: 20%;
+}
+.cartVal {
+  z-index: 4;
+  height: 32px;
+  font-size: 14px;
+  text-align: center;
+  border-top: none;
+  border-bottom: none;
+  border-right: 1px solid rgb(31, 31, 31);
+  border-left: 1px solid rgb(31, 31, 31);
+  padding: 0;
+}
+.cartQty {
+  margin-left: 15px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: thin solid rgb(31, 31, 31);
+  width: 112px;
+}
 
-/* a#userIcon {
-  height: 5%;
-  position: fixed;
-  right: 5%;
-  top: 3.5%;
-} */
+.cartCard button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: 0px;
+  cursor: pointer;
+}
 
 .userFormCon {
   width: 360px;

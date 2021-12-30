@@ -15,7 +15,11 @@
       </a>
       <div>
         <a id="userCart" href="/yourCart"><img src="/images/cartIcon.png"></a>
+        {{#if logged_in}}
+        <a id="userIcon" href="/dashboard"><img src="/images/userIcon.png"></a>
+        {{else}}
         <a id="userIcon" href="/login"><img src="/images/userIcon.png"></a>
+        {{/if}}
       </div>
     </header>
     <main>

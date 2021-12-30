@@ -1,1 +1,13 @@
-<h1>Your cart route</h1>
+<div class="cartHeader">
+<h1 id="cartHeading">Your Cart </h1>
+<p>put total here</p>
+
+<h2>My Items</h2>
+</div>
+<div id="cartEvent">
+{{#each cart.items}}
+{{>cartCard}}
+{{/each}}
+</div>
+<script src="/js/cartValueMod.js"></script>
+

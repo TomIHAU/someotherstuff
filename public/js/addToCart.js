@@ -1,10 +1,16 @@
 const productContainer = document.getElementById("displayProducts");
 
-const addToCart = (event) => {
-  let count = parseInt(event.target.getAttribute("data-id"));
+const addToCart = async (event) => {
+  let product_id = parseInt(event.target.getAttribute("data-id"));
 
   if (event.target.matches(".cardBtn")) {
-    console.log(count);
+    const userCart = await fetch("/api/item", {
+      method: "POST",
+      body: JSON.stringify({ product_id }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 };
 

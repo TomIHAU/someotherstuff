@@ -1,13 +1,13 @@
-const txtUserName = document.querySelector("#username");
-const txtPassword = document.querySelector("#password");
+const userNameF = document.querySelector("#username");
+const passwordF = document.querySelector("#password");
 const loginFrm = document.querySelector("#loginForm");
 
 const login = async (event) => {
   event.preventDefault();
 
-  const username = txtUserName.value.trim();
-  const password = txtPassword.value.trim();
-  console.log(username, password);
+  const username = userNameF.value.trim();
+  const password = passwordF.value.trim();
+
   if (username && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
@@ -20,9 +20,9 @@ const login = async (event) => {
       window.location.replace("/");
     } else {
       alert(`Incorrect username or password, please try again.`);
-      txtUserName.value = "";
-      txtPassword.value = "";
-      txtUserName.focus();
+      userName.value = "";
+      password.value = "";
+      userName.focus();
       return;
     }
   } else {
@@ -30,6 +30,6 @@ const login = async (event) => {
   }
 };
 
-txtUserName.focus();
+userNameF.focus();
 
 loginFrm.addEventListener("submit", login);

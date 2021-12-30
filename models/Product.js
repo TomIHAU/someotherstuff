@@ -19,7 +19,7 @@ Product.init(
       type: DataTypes.DECIMAL,
       allowNull: false,
     },
-    description: {
+    desc: {
       type: DataTypes.STRING,
       allowNull: true,
     },

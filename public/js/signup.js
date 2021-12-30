@@ -1,44 +1,52 @@
-const txtUserNameSU = document.querySelector("#nameSignup");
-const txtPasswordSU = document.querySelector("#passwordSignup");
-const signUpFrm = document.querySelector("#signUpForm");
+const usernameF = document.querySelector("#username");
+const emailF = document.querySelector("#email");
+const passwordF = document.querySelector("#password");
+const passwordRSUF = document.querySelector("#passwordR");
+const signupForm = document.querySelector("#signUpForm");
 
 const signup = async (event) => {
   event.preventDefault();
+  const username = usernameF.value.trim();
+  const email = emailF.value.trim();
+  const password = passwordF.value.trim();
+  const passwordRSU = passwordRSUF.value.trim();
 
-  const username = txtUserNameSU.value.trim();
-  const password = txtPasswordSU.value.trim();
+  await console.log(username, email, password, passwordRSU);
+  if (!username || !email || !password || !passwordRSU) {
+    alert(`All details not filled out. Please try again.`);
+    console.log(response.status);
+    return;
+  }
+  const response = await fetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({ username, email, password }),
+    headers: { "Content-Type": "application/json" },
+  });
 
-  if (username && password) {
-    const response = await fetch("/api/users", {
-      method: "POST",
-      body: JSON.stringify({ username, password }),
-      headers: { "Content-Type": "application/json" },
-    });
-    const data = await response.json();
-    if (data) {
-      const walletResponse = await fetch("/api/wallet/createWallet", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      if (walletResponse.ok) {
-        location.reload();
-        window.location.replace("/dashboard");
-      } else {
-        alert(`Username already exist. Please try again.`);
-        txtUserNameSU.value = "";
-        txtPasswordSU.value = "";
-        txtUserNameSU.focus();
-        return;
-      }
-    } else {
-      alert(`Username already exist. Please try again.`);
-      console.log(response.status);
-    }
+  const data = await response.json();
+
+  if (!data) {
+    return;
+  }
+
+  const walletResponse = await fetch("/api/cart", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (walletResponse.ok) {
+    location.reload();
+    window.location.replace("/dashboard");
+  } else {
+    alert(`Username already exist. Please try again.`);
+    username.value = "";
+    password.value = "";
+    passwordRSU.value = "";
+
+    return;
   }
 };
 
-txtUserNameSU.focus();
-
-signUpFrm.addEventListener("submit", signup);
+signupForm.addEventListener("submit", signup);
